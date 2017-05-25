@@ -1,0 +1,33 @@
+{
+  "name": "nodejs-async-await-wrapper-example",
+  "version": "1.0.0",
+  "description": "A simple example of how to wrap callback based implementations to use async-await in NodeJS",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/YuLeven/nodejs-async-await-wrapper-example.git"
+  },
+  "keywords": [
+    "nodejs",
+    "example",
+    "async",
+    "await",
+    "tutorial",
+    "wrapper"
+  ],
+  "author": "Yuri Levenhagen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YuLeven/nodejs-async-await-wrapper-example/issues"
+  },
+  "homepage": "https://github.com/YuLeven/nodejs-async-await-wrapper-example#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mysql": "^2.13.0"
+  }
+}

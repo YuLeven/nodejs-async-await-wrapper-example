@@ -16,7 +16,7 @@ class App {
         //Literal object containing the configurations
         this.configs = {
             get port() {
-                return process.env.EXAMPLE_APP_PORT || 8080
+                return process.env.PORT || 8080
             }
         }
     }

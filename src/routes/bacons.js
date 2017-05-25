@@ -30,8 +30,13 @@ router.get('/:id', async (req, res) => {
             params: [req.params.id]
         })
 
+        bacon = bacon.shift()
+
+        //Returns 404 if no register was found
+        if (bacon == null) return res.sendStatus(404);
+
         //Returns to the caller
-        return res.status(200).send(bacon.shift())
+        return res.status(200).send(bacon)
     } catch (error) {
         //Returns the error
         return res.status(500).send(error)
@@ -62,9 +67,11 @@ router.post('/', async (req, res) => {
         })
 
         //Commits the transaction
-        await mySQLWrapper.commit(connection);
+        await mySQLWrapper.commit(connection)
     } catch (error) {
-        await mySQLWrapper.rollback(connection);
+        //Rollback and return with error to the caller
+        await mySQLWrapper.rollback(connection)
+        return res.status(500).send(error)
     }
 
     try {
@@ -107,9 +114,11 @@ router.put('/:id', async (req, res) => {
         })
 
         //Commits the transaction
-        await mySQLWrapper.commit(connection);
+        await mySQLWrapper.commit(connection)
     } catch (error) {
-        await mySQLWrapper.rollback(connection);
+        //Rollback and return with error to the caller
+        await mySQLWrapper.rollback(connection)
+        return res.status(500).send(error)
     }
 
     try {
@@ -150,10 +159,11 @@ router.delete('/:id', async (req, res) => {
         })
 
         //Commits the transaction
-        await mySQLWrapper.commit(connection);
+        await mySQLWrapper.commit(connection)
         return res.sendStatus(200);
     } catch (error) {
-        await mySQLWrapper.rollback(connection);
+        //Rollback and return with error to the caller
+        await mySQLWrapper.rollback(connection)
         return res.status(500).send(error)
     }
 

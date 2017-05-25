@@ -49,7 +49,7 @@ module.exports = class MySQLWrapper {
      * @returns {Promise} - A promise to a query result
      * 
      */
-    static createTransactionQuery({query, params, connection}) {
+    static createTransactionalQuery({query, params, connection}) {
         
         return new Promise((succeed, fail) => {
 

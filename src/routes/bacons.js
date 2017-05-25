@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
         await mySQLWrapper.beginTransaction(connection);
         
         //Uses the opened transaction to do some change to the DB
-        insertResult = await mySQLWrapper.createTransactionQuery({
+        insertResult = await mySQLWrapper.createTransactionalQuery({
             query: `INSERT INTO bacons (type, price) VALUES (?, ?);`,
             params: [
                 req.body.type,
@@ -103,7 +103,7 @@ router.put('/:id', async (req, res) => {
         await mySQLWrapper.beginTransaction(connection);
         
         //Uses the opened transaction to do some change to the DB
-        await mySQLWrapper.createTransactionQuery({
+        await mySQLWrapper.createTransactionalQuery({
             query: `UPDATE bacons SET type = ?, price = ? WHERE id = ?;`,
             params: [
                 req.body.type,
@@ -150,7 +150,7 @@ router.delete('/:id', async (req, res) => {
         await mySQLWrapper.beginTransaction(connection);
         
         //Uses the opened transaction to do some change to the DB
-        await mySQLWrapper.createTransactionQuery({
+        await mySQLWrapper.createTransactionalQuery({
             query: `DELETE FROM bacons WHERE id = ?;`,
             params: [
                 req.params.id

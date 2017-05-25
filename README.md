@@ -1,5 +1,3 @@
-# nodejs-async-await-wrapper-example
-##
 NodeJS async-await wrapper example
 ==================================
 
